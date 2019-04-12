@@ -2,6 +2,17 @@
 #analyse the players info. in worldcupplayerinfo.tsv
 #pcoateChen
 
+
+#help
+showHelp(){
+	echo "analyse the players info. in worldcupplayerinfo.tsv"
+	echo "Usage: bash playerAssess [option]"
+	echo "-a :count number and radio of players in different range of age"
+	echo "-p :count number adn radio of players in different position"
+	echo "-n :find the player who has the longest name or shortest name"
+	echo "-o :find the oldest and youngest player"
+	echo "-h :help information" 
+}
 #count number and radio of players in different range of age
 countAgeRangeNumAndRadio(){
 	line_age = $(awk -F "\t" '{ print $6 }' worldcupplayerinfo.tsv)
@@ -67,7 +78,7 @@ countPositionNumAndRadio(){
 	echo "Forwards are $Forward the percent is $percent_F"
 }
 
-#who has the longest name or shortest name
+#find the player who has the longest name or shortest name
 nameLength(){
 	name = $(awk -F "\t" '{ print length($9) }' worldcupplayerinfo.tsv)
 	longest = 0
@@ -88,7 +99,7 @@ nameLength(){
 	echo "$shortest_name has the shortest name and the length is $shortest"
 
 }
-
+#find the oldest and youngest player
 playersAge(){
 	age = $(awk -F "\t" '{ print $6 }' worldcupplayerinfo.tsv)
 	oldest = 0
@@ -120,7 +131,17 @@ playersAge(){
 
 }
 
-countAgeRangeNumAndRadio
-countPositionNumAndRadio
-nameLength
-playersAge
+
+if [ "$1" == "" ]; then
+	echo "'-h' to show help"
+elif [ "$1" == "-h" ]; then
+	showHelp
+elif [ "$1" == "-a" ]; then
+	countAgeRangeNumAndRadio
+elif [ "$1" == "-p" ]; then
+	countPositionNumAndRadio
+elif [ "$1" == "-n" ]; then
+	nameLength
+elif [ "$1" == "-o"]; then
+	playersAge
+fi

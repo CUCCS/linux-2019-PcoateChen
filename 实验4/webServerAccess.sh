@@ -2,6 +2,19 @@
 #analyse webserver access data in web_log.tsv
 #pcoateChen
 
+
+#help
+showHelp(){
+	echo "analyse webserver access data in web_log.tsv"
+	echo "Usage: bash webServerAccess [option]"
+	echo "-o :top 100 host and count"
+	echo "-i :top 100 ip and count"
+	echo "-u :top 100 url"
+	echo "-r :response state code count and radio"
+	echo "-s :4xx state code and top 10 url count"
+	echo "-a :identified url top 100 host"
+	echo "-h :help information" 
+}
 #top 100 host and count
 top100_host(){
 	awk '{a[$1]+=1;} END {for i in a}{print a[i],i;}' ./web_log.tsv | sort -t " " -k 1 -n -r | head -n 100
@@ -32,9 +45,20 @@ top100_host_Url(){
 	awk -F '\t' '{if($5=="'$1'") {a[$1]++}} END {for(c in a) {print a[c],c;}}' ./web_log.tsv |sort -nr -k1 |head -n 10
 }
 
-top100_host
-top100_ip
-top100_url
-ResStateCodeCountAndRadio
-StateCodeAndTop10_Url
-top100_host_Url
+if [ "$1" == "" ]; then
+	echo "'-h' to show help"
+elif [ "$1" == "-h" ]; then
+	showHelp
+elif [ "$1" == "-o" ]; then
+	top100_host
+elif [ "$1" == "-i" ]; then
+	top100_ip
+elif [ "$1" == "-u" ]; then
+	top100_url
+elif [ "$1" == "-r"]; then
+	ResStateCodeCountAndRadio
+elif [ "$1" == "-s"]; then
+	StateCodeAndTop10_Url
+elif [ "$1" == "-a"]; then
+	top100_host_Url
+fi
