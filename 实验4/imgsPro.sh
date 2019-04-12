@@ -16,8 +16,8 @@ showHelp(){
 
 #compress imgs.jpeg quality
 compressJpeg(){
-	quality = $1
-	folderPath = $2
+	quality=$1
+	folderPath=$2
 	if [ -d "$folderPath" ]; then
 		for file in $(find "folderPath" \ (-name "*.jpeg"\) -type f); do
 			echo $file
@@ -29,8 +29,8 @@ compressJpeg(){
 
 #compress imgs.jpg|svg|png size
 compressPx(){
-	percent = $1
-	folderPath = $2
+	percent=$1
+	folderPath=$2
 	if [-d "$folderPath" ]; then
 		for file in $(find "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
 			echo $file
@@ -42,8 +42,8 @@ compressPx(){
 
 #add watermark to imgs
 add_watermark(){
-	watermark_text = $1
-	folderPath = $2
+	watermark_text=$1
+	folderPath=$2
 	if [-d "$folderPath" ]; then
 		for file in $(find "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
 			echo $file
@@ -55,27 +55,27 @@ add_watermark(){
 
 #rename pre or tail
 rename(){
-	preTail = $1
-	newName = $2
-	folderPath = $3
+	preTail=$1
+	newName=$2
+	folderPath=$3
 	if [-d "$folderPath" ]; then
 		for file in $(findfind "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f; do
 			if [ "$preTail" == "pre" ]; then
-				x = $file
-				direc = ${x%/*}
+				x=$file
+				direc=${x%/*}
 				echo $direc
-				file_name = ${x%%.*}
-				x = $file
+				file_name=${x%%.*}
+				x=$file
 				file_tail=${x#*.}
 				echo $file_name
-				x = $file_name
-				single_name = $ {x##*/}
+				x=$file_name
+				single_name=${x##*/}
 				echo $single_name
 				mv $file $direc'/'$newName$single_name'.'$file_tail		
 			elif [ "$preTail" == "tail" ]; then
-				x = $file
+				x=$file
 				file_name = ${x%%/*}
-				x = $file
+				x=$file
 				file_tail = ${x#*.}
 				mv $file $file_name$newName'.'$file_tail
 			else
@@ -88,13 +88,13 @@ rename(){
 
 #imgs.png|svg to .jpg
 convert(){
-	folderPath = $1
+	folderPath=$1
 	if [-d "$folderPath" ]; then
 		for file in $(findfind "folderPath" \ ( -name "*.svg" -or -name "*.png" \) -type f; do
-			x = $file
-			file_name = ${x%%.*}
-			x = $file
-			file_tail = ${x#*.}
+			x=$file
+			file_name=${x%%.*}
+			x=$file
+			file_tail=${x#*.}
 			convert $file $file_name'_format.'$file_tail	
 	else
                 echo "$folderPath not exists"
