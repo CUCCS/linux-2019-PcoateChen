@@ -90,7 +90,7 @@ rename(){
 convert(){
 	folderPath=$1
 	if [-d "$folderPath" ]; then
-		for file in $(findfind "folderPath" \ ( -name "*.svg" -or -name "*.png" \ ) -type f; do
+		for file in $(findfind "folderPath" \( -name "*.svg" -or -name "*.png" \) -type f); do
 			x=$file
 			file_name=${x%%.*}
 			x=$file
