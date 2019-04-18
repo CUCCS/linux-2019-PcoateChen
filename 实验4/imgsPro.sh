@@ -19,38 +19,43 @@ compressJpeg(){
 	quality=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" \(-name "*.jpeg"\) -type f); do
+		for file in $(find "folderPath" -regex '.*\.jpeg'); do
 			echo $file
 			$(convert "$file" -quality "$quality" "$file")
 		done
 	else
 		echo "$folderPath not exists"
+	fi
 }
+
 
 #compress imgs.jpg|svg|png size
 compressPx(){
 	percent=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png'); do
 			echo $file
 			$(convert "$file" -resize "$percent" "$file")
 		done
 	else
 		echo "$folderPath not exists"
+	fi
 }
+
 
 #add watermark to imgs
 add_watermark(){
 	watermark_text=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
 			echo $file
 			$(composite -greavity southeast -dissolve 80 -pointsize 16 -draw "text 5,5 '$watermark_text'" "$file")
 		done
 	else
 		echo "$folderPath not exists"
+	fi
 }
 
 #rename pre or tail
@@ -59,7 +64,7 @@ rename(){
 	newName=$2
 	folderPath=$3
 	if [ -d "$folderPath" ]; then
-		for file in $(findfind "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(findfind "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
 			if [ "$preTail" == "pre" ]; then
 				x=$file
 				direc=${x%/*}
@@ -80,24 +85,27 @@ rename(){
 				mv $file $file_name$newName'.'$file_tail
 			else
 				echo "please input 'pre' or 'tail'."
-			if
+			fi
 		done
 	else
-                echo "$folderPath not exists"
+		echo "$folderPath not exists"
+    fi
 }
 
 #imgs.png|svg to .jpg
 convert(){
 	folderPath=$1
 	if [ -d "$folderPath" ]; then
-		for file in $(findfind "folderPath" \( -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(findfind "folderPath"  -regex '.*\.png\|.*svg'); do
 			x=$file
 			file_name=${x%%.*}
 			x=$file
 			file_tail=${x#*.}
-			convert $file $file_name'_format.'$file_tail	
+			convert $file $file_name'_format.'$file_tail
+		done	
 	else
-                echo "$folderPath not exists"
+		echo "$folderPath not exists"
+	fi
 }
 
 if [ "$1" == "" ]; then
