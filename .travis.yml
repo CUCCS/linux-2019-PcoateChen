@@ -22,7 +22,7 @@ script:
   
   - cd 实验4/
   #解压
-  - 7z x 实验4/web_log.tsv.7z
+  - 7z x web_log.tsv.7z
   - ls
   
   #work1
