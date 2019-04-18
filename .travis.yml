@@ -28,11 +28,11 @@ script:
   #work1
   - bash imgsPro.sh
   - bash imgsPro.sh -h
-  - bash imgsPro.sh -q 50 testimg/
-  - bash imgsPro.sh -c 60 testimg/
-  - bash imgsPro.sh -w "aaaaaaaa" testimg/
-  - bash imgsPro.sh -r "pre" "bbbbbbb" testimg/
-  - bash imgsPro.sh -t testimg/
+  - bash imgsPro.sh -q 50 ./testimg/
+  - bash imgsPro.sh -c 60 ./testimg/
+  - bash imgsPro.sh -w "aaaaaaaa" ./testimg/
+  - bash imgsPro.sh -r "pre" "bbbbbbb" ./testimg/
+  - bash imgsPro.sh -t ./testimg/
   #work2
   - bash playerAssess.sh 
   - bash playerAssess.sh -h
