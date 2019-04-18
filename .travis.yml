@@ -13,14 +13,16 @@ before_install:
     #安装 imagemagick
     - sudo apt-get install imagemagick
     
-    #解压
+    #安装解压包
     - sudo apt install p7zip-full
-    - 7z x 实验4/web_log.tsv.7z
+    
     
 script:
   - bash test.sh
   
   - cd 实验4/
+  #解压
+  - 7z x 实验4/web_log.tsv.7z
   - ls
   
   #work1
