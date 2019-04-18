@@ -20,7 +20,7 @@ before_install:
 script:
   - bash test.sh
   
-  cd 实验4/
+  -cd 实验4/
   - ls
   
   #work1
