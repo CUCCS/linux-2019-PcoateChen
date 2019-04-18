@@ -59,7 +59,7 @@ rename(){
 	newName=$2
 	folderPath=$3
 	if [-d "$folderPath" ]; then
-		for file in $(findfind "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f; do
+		for file in $(findfind "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
 			if [ "$preTail" == "pre" ]; then
 				x=$file
 				direc=${x%/*}
