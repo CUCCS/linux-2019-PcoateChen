@@ -17,7 +17,7 @@ showHelp(){
 }
 #top 100 host and count
 top100_host(){
-	awk '{a[$1]+=1;} END {for i in a}{print a[i],i;}' ./web_log.tsv | sort -t " " -k 1 -n -r | head -n 100
+	awk '{a[$1]++;} END {for i in a}{print a[i],i;}' ./web_log.tsv | sort -t " " -k 1 -n -r | head -n 100
 }
 
 #top 100 ip and count
