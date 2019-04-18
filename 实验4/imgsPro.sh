@@ -64,7 +64,7 @@ rename(){
 	newName=$2
 	folderPath=$3
 	if [ -d "$folderPath" ]; then
-		for file in $(findfind "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
+		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
 			if [ "$preTail" == "pre" ]; then
 				x=$file
 				direc=${x%/*}
@@ -96,7 +96,7 @@ rename(){
 convert(){
 	folderPath=$1
 	if [ -d "$folderPath" ]; then
-		for file in $(findfind "folderPath"  -regex '.*\.png\|.*svg'); do
+		for file in $(find "folderPath"  -regex '.*\.png\|.*svg'); do
 			x=$file
 			file_name=${x%%.*}
 			x=$file
