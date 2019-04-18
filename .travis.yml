@@ -9,27 +9,9 @@ before_install:
     - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
     - /usr/bin/shellcheck --version
-    
-    #安装 imagemagick
-    - sudo apt-get install imagemagick
-    
-    #解压
 
 script:
   - bash test.sh
-  
-  cd 实验4
-  
-  #work1
-  #work2
-  - bash playerAssesss.sh 
-  - bash playerAssesss.sh -h
-  - bash playerAssesss.sh -a
-  - bash playerAssesss.sh -p
-  - bash playerAssesss.sh -n
-  - bash playerAssesss.sh -o
-  #work3
-  
 
 after_script:
   - /usr/bin/shellcheck test.sh
