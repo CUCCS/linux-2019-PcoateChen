@@ -19,7 +19,7 @@ compressJpeg(){
 	quality=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" \ (-name "*.jpeg"\) -type f); do
+		for file in $(find "folderPath" \(-name "*.jpeg"\) -type f); do
 			echo $file
 			$(convert "$file" -quality "$quality" "$file")
 		done
@@ -32,7 +32,7 @@ compressPx(){
 	percent=$1
 	folderPath=$2
 	if [-d "$folderPath" ]; then
-		for file in $(find "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(find "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
 			echo $file
 			$(convert "$file" -resize "$percent" "$file")
 		done
@@ -45,7 +45,7 @@ add_watermark(){
 	watermark_text=$1
 	folderPath=$2
 	if [-d "$folderPath" ]; then
-		for file in $(find "folderPath" \ (-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
+		for file in $(find "folderPath" \(-name "*.jpg" -or -name "*.svg" -or -name "*.png" \) -type f); do
 			echo $file
 			$(composite -greavity southeast -dissolve 80 -pointsize 16 -draw "text 5,5 '$watermark_text'" "$file")
 		done
