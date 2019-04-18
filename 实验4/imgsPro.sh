@@ -118,8 +118,8 @@ elif [ "$1" == "-c" ]; then
 	compressPx "$2" "$3"
 elif [ "$1" == "-w" ]; then
 	add_watermark "$2" "$3"
-elif [ "$1" == "-r"]; then
+elif [ "$1" == "-r" ]; then
 	rename "$2" "$3" "$4"
-elif [ "$1" == "-t"]; then
+elif [ "$1" == "-t" ]; then
 	convert "$2"
 fi
