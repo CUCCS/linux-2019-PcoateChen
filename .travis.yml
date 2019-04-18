@@ -9,9 +9,44 @@ before_install:
     - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
     - /usr/bin/shellcheck --version
-
+    
+    #安装 imagemagick
+    - sudo apt-get install imagemagick
+    
+    #解压
+    - sudo apt install p7zip-full
+    - 7z x web_log.tsv.7z
+    
 script:
   - bash test.sh
+  
+  - ls
+  
+  #work1
+  - bash imgsPro.sh
+  - bash imgsPro.sh -h
+  - bash imgsPro.sh -q 50 testimg/
+  - bash imgsPro.sh -c 60 testimg/
+  - bash imgsPro.sh -w "aaaaaaaa" testimg/
+  - bash imgsPro.sh -r "pre" "bbbbbbb" testimg/
+  - bash imgsPro.sh -t testimg/
+  #work2
+  - bash playerAssesss.sh 
+  - bash playerAssesss.sh -h
+  - bash playerAssesss.sh -a
+  - bash playerAssesss.sh -p
+  - bash playerAssesss.sh -n
+  - bash playerAssesss.sh -o
+  #work3
+  - bash webServerAccess.sh
+  - bash webServerAccess.sh -h
+  - bash webServerAccess.sh -o
+  - bash webServerAccess.sh -i
+  - bash webServerAccess.sh -u
+  - bash webServerAccess.sh -r
+  - bash webServerAccess.sh -s
+  - bash webServerAccess.sh -a
+  
 
 after_script:
   - /usr/bin/shellcheck test.sh
