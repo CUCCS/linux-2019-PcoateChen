@@ -32,12 +32,12 @@ script:
   - bash imgsPro.sh -r "pre" "bbbbbbb" testimg/
   - bash imgsPro.sh -t testimg/
   #work2
-  - bash playerAssesss.sh 
-  - bash playerAssesss.sh -h
-  - bash playerAssesss.sh -a
-  - bash playerAssesss.sh -p
-  - bash playerAssesss.sh -n
-  - bash playerAssesss.sh -o
+  - bash playerAssess.sh 
+  - bash playerAssess.sh -h
+  - bash playerAssess.sh -a
+  - bash playerAssess.sh -p
+  - bash playerAssess.sh -n
+  - bash playerAssess.sh -o
   #work3
   - bash webServerAccess.sh
   - bash webServerAccess.sh -h
