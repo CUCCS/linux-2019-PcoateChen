@@ -55,10 +55,10 @@ elif [ "$1" == "-i" ]; then
 	top100_ip
 elif [ "$1" == "-u" ]; then
 	top100_url
-elif [ "$1" == "-r"]; then
+elif [ "$1" == "-r" ]; then
 	ResStateCodeCountAndRadio
-elif [ "$1" == "-s"]; then
+elif [ "$1" == "-s" ]; then
 	StateCodeAndTop10_Url
-elif [ "$1" == "-a"]; then
+elif [ "$1" == "-a" ]; then
 	top100_host_Url
 fi
