@@ -18,7 +18,7 @@ showHelp(){
 compressJpeg(){
 	quality=$1
 	folderPath=$2
-	if [ -d "$folderPath" ]; then
+	if [-d "$folderPath" ]; then
 		for file in $(find "folderPath" \(-name "*.jpeg"\) -type f); do
 			echo $file
 			$(convert "$file" -quality "$quality" "$file")
