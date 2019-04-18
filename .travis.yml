@@ -15,11 +15,12 @@ before_install:
     
     #解压
     - sudo apt install p7zip-full
-    - 7z x web_log.tsv.7z
+    - 7z x 实验4/web_log.tsv.7z
     
 script:
   - bash test.sh
   
+  cd 实验4/
   - ls
   
   #work1
