@@ -20,8 +20,10 @@ compressJpeg(){
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
 		for file in $(find "$folderPath" -regex '.*\.jpeg'); do
-			echo $file
-			$(convert "$file" -quality "$quality" "$file")
+			head=${file%.*}
+                	Tail=${file##*.}
+                	convert $file -quality $quality $head'_'$quality'rq.'$Tail
+			echo $file 'is compressed into' $head'_'$quality'rq.'$Tail
 		done
 	else
 		echo "$folderPath not exists"
@@ -50,8 +52,10 @@ add_watermark(){
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
 		for file in $(find "$folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
-			echo $file
-			$(composite -greavity southeast -dissolve 80 -pointsize 16 -draw "text 5,5 '$watermark_text'" "$file")
+			head=${file%.*}
+                	Tail=${file##*.}
+			convert $file -gravity southeast -fill black -pointsize 16 -draw "text 5,5 '$watermark_text'" $head'_wm.'$Tail
+			echo $file "is added watermark" 
 		done
 	else
 		echo "$folderPath not exists"
