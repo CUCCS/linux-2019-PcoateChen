@@ -113,13 +113,13 @@ if [ "$1" == "" ]; then
 elif [ "$1" == "-h" ]; then
 	showHelp
 elif [ "$1" == "-q" ]; then
-	compressJpeg "$2" "$3"
+	compressJpeg $2 $3
 elif [ "$1" == "-c" ]; then
-	compressPx "$2" "$3"
+	compressPx $2 $3
 elif [ "$1" == "-w" ]; then
-	add_watermark "$2" "$3"
+	add_watermark $2 $3
 elif [ "$1" == "-r" ]; then
-	rename "$2" "$3" "$4"
+	rename $2 $3 $4
 elif [ "$1" == "-t" ]; then
-	convert "$2"
+	convert $2
 fi
