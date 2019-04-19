@@ -19,7 +19,7 @@ compressJpeg(){
 	quality=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" -regex '.*\.jpeg'); do
+		for file in $(find "$folderPath" -regex '.*\.jpeg'); do
 			echo $file
 			$(convert "$file" -quality "$quality" "$file")
 		done
@@ -34,7 +34,7 @@ compressPx(){
 	percent=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png'); do
+		for file in $(find "$folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png'); do
 			echo $file
 			$(convert "$file" -resize "$percent" "$file")
 		done
@@ -49,7 +49,7 @@ add_watermark(){
 	watermark_text=$1
 	folderPath=$2
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
+		for file in $(find "$folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
 			echo $file
 			$(composite -greavity southeast -dissolve 80 -pointsize 16 -draw "text 5,5 '$watermark_text'" "$file")
 		done
@@ -64,7 +64,7 @@ rename(){
 	newName=$2
 	folderPath=$3
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
+		for file in $(find "$folderPath" -regex '.*\.jpg\|.*\.svg\|.*\.png\|.*\.jpeg'); do
 			if [ "$preTail" == "pre" ]; then
 				x=$file
 				direc=${x%/*}
@@ -96,7 +96,7 @@ rename(){
 convert(){
 	folderPath=$1
 	if [ -d "$folderPath" ]; then
-		for file in $(find "folderPath"  -regex '.*\.png\|.*svg'); do
+		for file in $(find "$folderPath"  -regex '.*\.png\|.*svg'); do
 			x=$file
 			file_name=${x%%.*}
 			x=$file
